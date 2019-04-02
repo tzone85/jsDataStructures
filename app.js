@@ -4,7 +4,7 @@
 
 // functions: push, pop, peek, length
 
-var letters = [];   // this is our stack
+/*var letters = [];   // this is our stack
 
 var word = "racecar";
 
@@ -24,4 +24,52 @@ if (rword === word){
     console.log(word + " is a palindrome.");
 } else {
     console.log(word + " is not a palindrome.");
+}*/
+
+// creat a stack
+
+var Stack = function(){
+    this.count = 0;
+    this.storage = {};
+
+    // add a value onto the end of the stack
+    this.push = function (value) {
+        this.storage[this.count] = value;
+        this.count++;
+    }
+
+    // remove and returns the value at the end of the stack
+    this.pop = function () {
+        if (this.count === 0){
+            return undefined;
+        }
+        this.count--;
+        var result = this.storage[this.count];
+        delete this.storage[this.count];
+        return result;
+    }
+
+    this.size = function () {
+        return this.count;
+    }
+
+    // returns the value at the end of the stack
+    this.peek = function () {
+        return this.storage[this.count - 1];
+    }
 }
+
+var myStack = new Stack();
+
+myStack.push(1);
+myStack.push(2);
+myStack.push(3);
+myStack.push(4);
+console.log(myStack.peek());
+console.log(myStack.pop());
+console.log(myStack.peek());
+myStack.push("ThandoTec");
+console.log(myStack.size());
+console.log(myStack.peek());
+console.log(myStack.pop());
+console.log(myStack.peek());
